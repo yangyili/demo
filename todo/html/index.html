@@ -5,15 +5,20 @@
     <title>Document</title>
     <script src="../js/jquery-1.11.0.js"></script>
     <script src="../js/todo.js"></script>
+    <link rel="stylesheet" href="../css/todo.css"/>
 </head>
 <body>
     <input type="text"/>
+    <div class="works">
+        <ul></ul>
+    </div>
 </body>
 </html>
 <script>
     $(document).ready(function() {
         $('input').on('keypress', function (event) {
             if (event.keyCode == 13 && $(this).val()) {
+                Todo.add_work($(this).val());
             }
         });
     })
