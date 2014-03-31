@@ -51,9 +51,13 @@ var Todo = function() {
 
     var change_work_left_status = function () {
         var left_text = $('li.active').length + 'item left';
-        var complete_text = "Clear complete(" + $('li.complete').length + ")";
         $('span.work-left').text(left_text);
-        $('a.work-complete').text(complete_text);
+        if ($('li.complete').length > 0) {
+            var complete_text = "Clear complete(" + $('li.complete').length + ")";
+            $('a.work-complete').removeClass('none').text(complete_text);
+        } else {
+            $('a.work-complete').addClass('none');
+        }
     };
 
     var remove_all_complete_work = function () {
