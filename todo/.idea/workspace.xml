@@ -44,7 +44,7 @@
       <file leaf-file-name="todo.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/todo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="47" selection-start="158" selection-end="158" vertical-scroll-proportion="0.07746479" vertical-offset="0" max-vertical-offset="852">
+            <state line="3" column="47" selection-start="158" selection-end="158" vertical-scroll-proportion="0.07764706" vertical-offset="0" max-vertical-offset="850">
               <folding />
             </state>
           </provider>
@@ -169,6 +169,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/src/hipandora" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -245,7 +246,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/todo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="47" selection-start="158" selection-end="158" vertical-scroll-proportion="0.07746479" vertical-offset="0" max-vertical-offset="852">
+        <state line="3" column="47" selection-start="158" selection-end="158" vertical-scroll-proportion="0.07764706" vertical-offset="0" max-vertical-offset="850">
           <folding />
         </state>
       </provider>
