@@ -7,3 +7,7 @@ li span,
 li .del {
     margin-left: 10px;
 }
+
+.delete {
+    text-decoration: line-through;
+}
