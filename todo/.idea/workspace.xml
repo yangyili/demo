@@ -32,10 +32,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="110" selection-end="110" vertical-scroll-proportion="0.18757613" vertical-offset="0" max-vertical-offset="821">
+            <state line="7" column="48" selection-start="236" selection-end="236" vertical-scroll-proportion="-4.967742" vertical-offset="0" max-vertical-offset="660">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todo.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/todo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="47" selection-start="158" selection-end="158" vertical-scroll-proportion="0.07746479" vertical-offset="0" max-vertical-offset="852">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="todo.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/todo.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="22" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="308">
               <folding />
             </state>
           </provider>
@@ -52,6 +70,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/html/index.html" />
+        <option value="$PROJECT_DIR$/css/todo.css" />
+        <option value="$PROJECT_DIR$/js/todo.js" />
       </list>
     </option>
   </component>
@@ -133,6 +153,10 @@
               <option name="myItemId" value="todo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -205,9 +229,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/todo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="22" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="308">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/html/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="110" selection-end="110" vertical-scroll-proportion="0.18757613" vertical-offset="0" max-vertical-offset="821">
+        <state line="7" column="48" selection-start="236" selection-end="236" vertical-scroll-proportion="-4.967742" vertical-offset="0" max-vertical-offset="660">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/todo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="47" selection-start="158" selection-end="158" vertical-scroll-proportion="0.07746479" vertical-offset="0" max-vertical-offset="852">
           <folding />
         </state>
       </provider>
