@@ -7,15 +7,18 @@ var Todo = function() {
         '</li>';
         $('.works ul').append($(work_element));
         toggle_sign_all_btn();
+        change_work_left_status();
     };
 
     var remove_work = function(target) {
         $(target).parent().remove();
         toggle_sign_all_btn();
+        change_work_left_status();
     };
 
     var toggle_active = function(target) {
         $(target).parent().toggleClass('active complete');
+        change_work_left_status();
     };
 
     var toggle_all_works = function() {
@@ -24,6 +27,7 @@ var Todo = function() {
         } else {
             $('li').removeClass('complete').addClass('active');
         }
+        change_work_left_status();
     };
 
     var toggle_sign_all_btn = function () {
@@ -43,6 +47,10 @@ var Todo = function() {
         }
     };
 
+    var change_work_left_status = function () {
+        var text = $('li.active').length + 'item left';
+        $('span.work-left').text(text);
+    };
     return {
         add_work: add_work,
         remove_work: remove_work,
