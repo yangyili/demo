@@ -24,7 +24,7 @@ var Todo = function() {
         } else {
             $('li').removeClass('complete').addClass('active');
         }
-    }
+    };
 
     var toggle_sign_all_btn = function () {
         if ($('ul').children().length > 0) {
@@ -34,11 +34,21 @@ var Todo = function() {
         }
     };
 
+    var filter_work = function (status) {
+        if (status) {
+            $('li').not('.' + status).addClass('none');
+            $('li.' + status).removeClass('none');
+        } else {
+            $('li').removeClass('none')
+        }
+    };
+
     return {
         add_work: add_work,
         remove_work: remove_work,
         toggle_active: toggle_active,
         toggle_all_works: toggle_all_works,
-        toggle_sign_all_btn: toggle_sign_all_btn
+        toggle_sign_all_btn: toggle_sign_all_btn,
+        filter_work: filter_work
     };
 }();
