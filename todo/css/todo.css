@@ -3,11 +3,18 @@
     padding-left: 0;
 }
 
-li span,
-li .del {
+li span {
     margin-left: 10px;
 }
 
-.sel {
+.complete span{
     text-decoration: line-through;
+}
+
+li a {
+    margin-left: 6px;
+}
+
+.none {
+    display: none;
 }
