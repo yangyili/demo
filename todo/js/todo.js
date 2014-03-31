@@ -33,8 +33,10 @@ var Todo = function() {
     var toggle_sign_all_btn = function () {
         if ($('ul').children().length > 0) {
             $('.toggle-all').removeClass('none');
+            $('.work-operate').removeClass('none');
         } else {
             $('.toggle-all').addClass('none');
+            $('.work-operate').addClass('none');
         }
     };
 
@@ -48,8 +50,15 @@ var Todo = function() {
     };
 
     var change_work_left_status = function () {
-        var text = $('li.active').length + 'item left';
-        $('span.work-left').text(text);
+        var left_text = $('li.active').length + 'item left';
+        var complete_text = "Clear complete(" + $('li.complete').length + ")";
+        $('span.work-left').text(left_text);
+        $('a.work-complete').text(complete_text);
+    };
+
+    var remove_all_complete_work = function () {
+        $('li.complete').remove();
+        change_work_left_status();
     };
     return {
         add_work: add_work,
@@ -57,6 +66,7 @@ var Todo = function() {
         toggle_active: toggle_active,
         toggle_all_works: toggle_all_works,
         toggle_sign_all_btn: toggle_sign_all_btn,
-        filter_work: filter_work
+        filter_work: filter_work,
+        remove_all_complete_work: remove_all_complete_work
     };
 }();

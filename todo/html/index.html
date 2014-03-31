@@ -13,11 +13,12 @@
     <div class="works">
         <ul></ul>
     </div>
-    <div>
+    <div class="work-operate none">
         <span class="work-left"></span>
         <a href="javascript:{}" onclick="Todo.filter_work()">All</a>
         <a href="javascript:{}" onclick="Todo.filter_work('active')">Active</a>
         <a href="javascript:{}" onclick="Todo.filter_work('complete')">Completed</a>
+        <a class="work-complete" href="javascript:{}" onclick="Todo.remove_all_complete_work()"></a>
     </div>
 </body>
 </html>
