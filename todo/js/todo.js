@@ -3,23 +3,42 @@ var Todo = function() {
         var work_element = '<li class="active">' +
             '<a onclick="Todo.toggle_active(this)" href="javascript:{}">sign</a>' +
             '<span>' + work + '</span>' +
-            '<a class="del" onclick="Todo.remove_work(this)" href="javascript:{}">x</a>'
+            '<a onclick="Todo.remove_work(this)" href="javascript:{}">x</a>'
         '</li>';
         $('.works ul').append($(work_element));
+        toggle_sign_all_btn();
     };
 
     var remove_work = function(target) {
         $(target).parent().remove();
+        toggle_sign_all_btn();
     };
 
     var toggle_active = function(target) {
-        $(target).siblings('span').toggleClass('sel');
         $(target).parent().toggleClass('active complete');
+    };
+
+    var toggle_all_works = function() {
+        if ($('li.active').length > 0) {
+            $('li').removeClass('active').addClass('complete');
+        } else {
+            $('li').removeClass('complete').addClass('active');
+        }
+    }
+
+    var toggle_sign_all_btn = function () {
+        if ($('ul').children().length > 0) {
+            $('.toggle-all').removeClass('none');
+        } else {
+            $('.toggle-all').addClass('none');
+        }
     };
 
     return {
         add_work: add_work,
         remove_work: remove_work,
-        toggle_active: toggle_active
+        toggle_active: toggle_active,
+        toggle_all_works: toggle_all_works,
+        toggle_sign_all_btn: toggle_sign_all_btn
     };
 }();
