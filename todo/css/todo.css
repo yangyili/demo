@@ -1,0 +1,9 @@
+.works ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li span,
+li .del {
+    margin-left: 10px;
+}
