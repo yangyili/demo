@@ -19,6 +19,7 @@
         $('input').on('keypress', function (event) {
             if (event.keyCode == 13 && $(this).val()) {
                 Todo.add_work($(this).val());
+                $(this).val('');
             }
         });
     })
