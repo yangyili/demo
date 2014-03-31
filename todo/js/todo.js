@@ -1,7 +1,7 @@
 var Todo = function() {
     var add_work = function(work) {
         var work_element = '<li class="active">' +
-            '<a class="sel" href="javascript:{}">sign</a>' +
+            '<a onclick="Todo.toggle_active(this)" href="javascript:{}">sign</a>' +
             '<span>' + work + '</span>' +
             '<a class="del" onclick="Todo.remove_work(this)" href="javascript:{}">x</a>'
         '</li>';
@@ -9,11 +9,17 @@ var Todo = function() {
     };
 
     var remove_work = function(target) {
-        console.log('target', target, $(target));
         $(target).parent().remove();
-    }
+    };
+
+    var toggle_active = function(target) {
+        $(target).siblings('span').toggleClass('sel');
+        $(target).parent().toggleClass('active complete');
+    };
+
     return {
         add_work: add_work,
-        remove_work: remove_work
+        remove_work: remove_work,
+        toggle_active: toggle_active
     };
 }();
