@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/todo.js"></script>
+    <link rel="stylesheet" href="css/todo.css"/>
+</head>
+<body>
+    <div>
+        <a href="javascript:{}" class="none">toggleAll</a>
+        <input type="text"/>
+    </div>
+    <div class="works">
+        <ul></ul>
+    </div>
+    <div class="filter-works">
+        <span></span>
+        <a href="javascript:{}" onclick="Todo.filter_work()">All</a>
+        <a href="javascript:{}" onclick="Todo.filter_work('active')">Active</a>
+        <a href="javascript:{}" onclick="Todo.filter_work('complete')">Complete</a>
+        <a href="javascript:{}" class="none"></a>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $('input').on('keypress', function (event) {
+            if (event.keyCode == 13) {
+                Todo.add_work($(this));
+            }
+        });
+    });
+</script>

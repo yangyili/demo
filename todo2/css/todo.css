@@ -1,0 +1,11 @@
+.none {
+    display: none;
+}
+
+.works ul {
+    list-style-type: none;
+}
+
+li.complete span {
+   text-decoration: line-through;
+}
