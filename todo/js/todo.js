@@ -1,4 +1,6 @@
 var Todo = function() {
+    var store = $.localStorage;
+    var works = store.get('works') || '';
     var add_work = function(work) {
         var work_element = '<li class="active">' +
             '<a onclick="Todo.toggle_active(this)" href="javascript:{}">sign</a>' +
@@ -6,6 +8,7 @@ var Todo = function() {
             '<a onclick="Todo.remove_work(this)" href="javascript:{}">x</a>'
         '</li>';
         $('.works ul').append($(work_element));
+        store.setItem('works', $('.work ul'));
         toggle_sign_all_btn();
         change_work_left_status();
     };
