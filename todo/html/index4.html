@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/jquery-1.11.0.js"></script>
+    <script src="../js/store.js"></script>
+    <script src="../js/todo4.js"></script>
+    <link rel="stylesheet" href="../css/todo3.css"/>
+</head>
+<body>
+    <input type="text"/>
+
+    <div class="works">
+        <ul></ul>
+    </div>
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        Todo4.init();
+        $('input').on('keypress', function (event) {
+            if (event.keyCode == 13 && $(this).val()) {
+                Todo4.add_work($(this).val());
+                $(this).val('');
+            }
+        });
+    });
+</script>
