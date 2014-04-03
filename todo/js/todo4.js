@@ -90,6 +90,11 @@ var Todo4 = function () {
     };
 
     var toggle_all_work = function () {
+        if (completed_count < all_works.length) {
+            change_all_works_status(1);
+        } else {
+            change_all_works_status(0);
+        }
     };
 
     var remove_completed_work = function () {
@@ -103,6 +108,12 @@ var Todo4 = function () {
             }
         }
         return completed_count;
+    };
+
+    var change_all_works_status = function (is_complete) {
+        for (var i = 0; i < all_works.length; i++) {
+            all_works[i].is_complete = is_complete;
+        }
     };
 
     return {
