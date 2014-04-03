@@ -18,7 +18,6 @@ var Todo4 = function () {
                 remove_completed_work();
             });
         render();
-        render_nav();
     }
 
     var render = function () {
@@ -26,17 +25,26 @@ var Todo4 = function () {
         for (var i = 0; i < all_works.length; i++) {
             render_one(all_works[i], i);
         }
+        render_nav();
     };
 
     var render_nav = function () {
         var $nav = $('.nav');
+        var $toggle_all = $('.toggle-all');
+        var $del_all = $nav.find('.del');
+        $toggle_all.addClass('none');
+        $del_all.addClass('none');
+        $nav.addClass('none');
         $nav.find('.work-status').text(all_works.length-completed_count()+'left');
         if (all_works.length > 0) {
-            $('.toggle-all').removeClass('none')
+            $nav.removeClass('none');
+        }
+        if (all_works.length > 0) {
+            $toggle_all.removeClass('none')
                 .text('toggle-all');
         }
         if (completed_count() > 0) {
-            $nav.find('.del').removeClass('none')
+            $del_all.removeClass('none')
                 .text('clear completed('+completed_count()+')');
         }
     };
@@ -66,21 +74,18 @@ var Todo4 = function () {
         all_works.unshift(work);
         store.set('all_works', all_works);
         render();
-        render_nav();
     };
 
     var remove_work = function (index) {
         all_works.splice(index, 1);
         store.set('all_works', all_works);
         render();
-        render_nav();
     };
 
     var toggle_work = function (index) {
         all_works[index].is_complete = !all_works[index].is_complete;
         store.set('all_works', all_works);
         render();
-        render_nav();
     };
 
     var filter_work = function (status) {
@@ -94,17 +99,22 @@ var Todo4 = function () {
 
     var toggle_all_work = function () {
         if (completed_count() < all_works.length) {
-            console.log('if');
             change_all_works_status(1);
         } else {
             change_all_works_status(0);
-            console.log('else');
         }
         render();
-        render_nav();
     };
 
     var remove_completed_work = function () {
+        for (var i = 0; i < all_works.length; i++) {
+            if (all_works[i].is_complete) {
+                all_works.splice(i, 1);
+                i--;
+            }
+        }
+        store.set('all_works', all_works);
+        render();
     };
 
     var completed_count = function () {
