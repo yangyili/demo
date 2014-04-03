@@ -4,3 +4,6 @@
 .works ul {
     list-style-type: none;
 }
+.none {
+    display: none;
+}

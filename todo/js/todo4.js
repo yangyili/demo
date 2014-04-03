@@ -7,6 +7,10 @@ var Todo4 = function () {
                 $(this).val('');
             }
         });
+        $('.filter').click(function () {
+            var status = $(this).data('status') || '';
+            filter_work(status);
+        });
         render();
     }
 
@@ -54,6 +58,15 @@ var Todo4 = function () {
         all_works[index].is_complete = !all_works[index].is_complete;
         store.set('all_works', all_works);
         render();
+    };
+
+    var filter_work = function (status) {
+        var status = '.' + status;
+        var $li = $('li');
+        $li.removeClass('none');
+        if (status) {
+            $li.not(status).addClass('none');
+        }
     };
 
     return {
