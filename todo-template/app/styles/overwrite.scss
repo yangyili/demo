@@ -1,0 +1,27 @@
+.todo-list-wrapper a:hover {
+    text-decoration: none;
+}
+
+.todo-list-wrapper {
+    .change-all {
+        height: 35px;
+    }
+    .unadded-todo {
+        margin-top: 1px;
+        border-bottom: none;
+    }
+    .active, .completed {
+        display: none;
+    }
+}
+
+.todo-list-item {
+    .remove {
+        display: none;
+    }
+    &:hover {
+        .remove {
+            display: block;
+        }
+    }
+}
