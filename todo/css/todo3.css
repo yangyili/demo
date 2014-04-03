@@ -1,0 +1,6 @@
+.complete span {
+    text-decoration: line-through;
+}
+.works ul {
+    list-style-type: none;
+}
