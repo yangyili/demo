@@ -20,11 +20,5 @@
 <script>
     $(document).ready(function () {
         Todo4.init();
-        $('input').on('keypress', function (event) {
-            if (event.keyCode == 13 && $(this).val()) {
-                Todo4.add_work($(this).val());
-                $(this).val('');
-            }
-        });
     });
 </script>
