@@ -11,6 +11,12 @@ var Todo4 = function () {
             var status = $(this).data('status') || '';
             filter_work(status);
         });
+        $('.toggle-all').click(function () {
+                toggle_all_work();
+            });
+        $('.nav').find('.del').click(function () {
+                remove_completed_work();
+            });
         render();
         render_nav();
     }
@@ -26,18 +32,12 @@ var Todo4 = function () {
         var $nav = $('.nav');
         $nav.find('.work-status').text(all_works.length-completed_count()+'left');
         if (all_works.length > 0) {
-            $nav.find('.toggle-all').removeClass('none')
-                .text('toggle-all')
-                .click(function () {
-                    toggle_all_work();
-                });
+            $('.toggle-all').removeClass('none')
+                .text('toggle-all');
         }
         if (completed_count() > 0) {
             $nav.find('.del').removeClass('none')
-                .text('clear completed('+completed_count()+')')
-                .click(function () {
-                    remove_completed_work();
-                });
+                .text('clear completed('+completed_count()+')');
         }
     };
     var render_one = function (work, index) {
@@ -66,18 +66,21 @@ var Todo4 = function () {
         all_works.unshift(work);
         store.set('all_works', all_works);
         render();
+        render_nav();
     };
 
     var remove_work = function (index) {
         all_works.splice(index, 1);
         store.set('all_works', all_works);
         render();
+        render_nav();
     };
 
     var toggle_work = function (index) {
         all_works[index].is_complete = !all_works[index].is_complete;
         store.set('all_works', all_works);
         render();
+        render_nav();
     };
 
     var filter_work = function (status) {
@@ -90,11 +93,15 @@ var Todo4 = function () {
     };
 
     var toggle_all_work = function () {
-        if (completed_count < all_works.length) {
+        if (completed_count() < all_works.length) {
+            console.log('if');
             change_all_works_status(1);
         } else {
             change_all_works_status(0);
+            console.log('else');
         }
+        render();
+        render_nav();
     };
 
     var remove_completed_work = function () {
@@ -114,6 +121,7 @@ var Todo4 = function () {
         for (var i = 0; i < all_works.length; i++) {
             all_works[i].is_complete = is_complete;
         }
+        store.set('all_works', all_works);
     };
 
     return {
