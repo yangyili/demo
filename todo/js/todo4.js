@@ -12,12 +12,32 @@ var Todo4 = function () {
             filter_work(status);
         });
         render();
+        render_nav();
     }
 
     var render = function () {
         $('.works ul').empty();
         for (var i = 0; i < all_works.length; i++) {
             render_one(all_works[i], i);
+        }
+    };
+
+    var render_nav = function () {
+        var $nav = $('.nav');
+        $nav.find('.work-status').text(all_works.length-completed_count()+'left');
+        if (all_works.length > 0) {
+            $nav.find('.toggle-all').removeClass('none')
+                .text('toggle-all')
+                .click(function () {
+                    toggle_all_work();
+                });
+        }
+        if (completed_count() > 0) {
+            $nav.find('.del').removeClass('none')
+                .text('clear completed('+completed_count()+')')
+                .click(function () {
+                    remove_completed_work();
+                });
         }
     };
     var render_one = function (work, index) {
@@ -61,12 +81,28 @@ var Todo4 = function () {
     };
 
     var filter_work = function (status) {
-        var status = '.' + status;
+        var status = status?'.' + status:'';
         var $li = $('li');
         $li.removeClass('none');
         if (status) {
             $li.not(status).addClass('none');
         }
+    };
+
+    var toggle_all_work = function () {
+    };
+
+    var remove_completed_work = function () {
+    };
+
+    var completed_count = function () {
+        var completed_count = 0;
+        for (var i = 0; i < all_works.length; i++) {
+            if (all_works[i].is_complete) {
+                completed_count++;
+            }
+        }
+        return completed_count;
     };
 
     return {
