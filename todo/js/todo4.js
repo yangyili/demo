@@ -3,23 +3,33 @@ var Todo4 = function () {
         var all_works = store.get('all_works') || [];
         $('.works ul').empty();
         for (var i = 0; i < all_works.length; i++) {
-            var li_class = all_works[i].is_complete ? 'complete' : 'active';
-            var li = '<li class='+ li_class +'>' +
-                       '<a href="javascript:{}" class="sel" data-id='+ all_works[i].id +'>s</a>' +
-                       '<span>' + all_works[i].name + '</span>' +
-                       '<a href="javascript:{}" class="del" data-id='+ all_works[i].id + '>x</a>' +
-                     '</li>';
-            $('.works ul').append($(li));
+            render_one(all_works[i]);
         }
-        $('li .del').click(function () {
-            var id = $(this).data('id');
-            Todo4.remove_work(id);
-        });
-        $('li .sel').click(function () {
-            var id = $(this).data('id');
-            console.log('sel id', id);
-            Todo4.toggle_work(id);
-        });
+    };
+    var render_one = function (work) {
+        var li_class = work.is_complete ? 'complete' : 'active';
+        var id = work.id.toString();
+        var li = '<li class='+ li_class +'>' +
+            '<a href="javascript:{}" class="sel" data-id='+ work.id +'>s</a>' +
+            '<span>' + work.name + '</span>' +
+            '<a href="javascript:{}" class="del" data-id='+ work.id + '>x</a>' +
+            '</li>';
+        var $ul = $('.works ul');
+        var $li = $(li);
+        $ul.append($li);
+        $li.find('.del')
+            .click(function () {
+                var id = $(this).data('id');
+                Todo4.remove_work(id);
+            });
+
+        $li.find('.sel')
+            .click(function () {
+                var id = $(this).data('id');
+                Todo4.toggle_work(id);
+            });
+        ;
+
     };
 
     var add_work = function (name) {
@@ -42,7 +52,7 @@ var Todo4 = function () {
     var toggle_work = function (id) {
         var index = index_of_works(id);
         console.log('index', index);
-        var works = store.get('all_works');
+        var works = store.get('all_works') || {};
         works[index].is_complete = !works[index].is_complete;
         store.set('all_works', works);
         init_data();
