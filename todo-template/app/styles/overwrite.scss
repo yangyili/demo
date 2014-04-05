@@ -29,3 +29,11 @@
 .none {
   display: none;
 }
+
+.hide-element {
+  visibility: hidden;
+}
+
+.complete span {
+  text-decoration: line-through;
+}
