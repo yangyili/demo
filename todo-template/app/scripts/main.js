@@ -21,7 +21,9 @@ var Todo = function () {
     };
 
     var render_one = function (work, index) {
-        var li = '<li class="list-group-item todo-list-item">' +
+        console.log('status', work.is_complete);
+        var status = work.is_complete?'complete':'actived';
+        var li = '<li class="list-group-item todo-list-item '+ status + '"' +'>' +
                     '<a class="glyphicon glyphicon-ok btn-link"></a>' +
                     '<span class="col-xs-offset-1">' + work.name + '</span>' +
                     '<a class="glyphicon glyphicon-remove btn-link pull-right remove"></a>' +
@@ -31,14 +33,27 @@ var Todo = function () {
             .click(function () {
                 remove_work(index);
             });
-        $li.find('glyphicon-ok')
+        $li.find('.glyphicon-ok')
             .click(function () {
+                console.log('ok', index);
                 toggle_work(index);
             });
         $('ul.list-group').append($li);
     };
 
     var render_nav = function () {
+        $('.filter-work').click(function () {
+            var status = $(this).data('status');
+        });
+        if (all_works.length > 0) {
+            $('.input-group').find('a')
+                .removeClass('hide-element');
+            $('li.list-group-item-info').removeClass('none');
+        }
+
+        if (complete_count() > 0) {
+            $('li a.clear-complete-btn').removeClass('hide-element');
+        }
     };
 
     var add_work = function (name) {
@@ -50,12 +65,27 @@ var Todo = function () {
 
     var remove_work = function (index) {
         all_works.splice(index, 1);
+        store.set('all_works', all_works);
         render();
     };
 
     var toggle_work = function (index) {
+        console.log(index);
         all_works[index].is_complete = !all_works[index].is_complete;
+        store.set('all_works', all_works);
         render();
+    };
+
+    var filter_work = function() {}
+
+    var complete_count = function () {
+        var complete_count = 0;
+        for (var i =0; i < all_works.length; i++) {
+            if (all_works[i].is_complete) {
+                complete_count++;
+            }
+        }
+        return complete_count;
     };
 
     return {
