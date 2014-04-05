@@ -45,10 +45,14 @@ var Todo = function () {
         $('.filter-work').click(function () {
             var status = $(this).data('status');
         });
+        var $toggle_all = $('.input-group').find('a');
+        var $clear_btn = $('li.list-group-item-info');
         if (all_works.length > 0) {
-            $('.input-group').find('a')
-                .removeClass('hide-element');
-            $('li.list-group-item-info').removeClass('none');
+            $toggle_all.removeClass('hide-element');
+            $clear_btn.removeClass('none');
+        } else {
+            $toggle_all.addClass('hide-element');
+            $clear_btn.addClass('none');
         }
 
         if (complete_count() > 0) {
