@@ -46,17 +46,22 @@ var Todo = function () {
             var status = $(this).data('status');
         });
         var $toggle_all = $('.input-group').find('a');
-        var $clear_btn = $('li.list-group-item-info');
+        var $status_nav = $('.list-group-item-info');
         if (all_works.length > 0) {
             $toggle_all.removeClass('hide-element');
-            $clear_btn.removeClass('none');
+            $status_nav.removeClass('none');
         } else {
             $toggle_all.addClass('hide-element');
-            $clear_btn.addClass('none');
+            $status_nav.addClass('none');
         }
 
-        if (complete_count() > 0) {
-            $('li a.clear-complete-btn').removeClass('hide-element');
+        var $clear_btn = $('a.clear-complete-btn');
+        var completed_count = complete_count();
+        $clear_btn.text('clear completed('+completed_count+')');
+        if (completed_count > 0) {
+            $clear_btn.removeClass('hide-element');
+        } else {
+            $clear_btn.addClass('hide-element');
         }
     };
 
