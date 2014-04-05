@@ -1,7 +1,6 @@
 var Todo = function () {
     var all_works = store.get('all_works') || [];
     function init() {
-        console.log('init');
         $('.input-group').find('input')
             .on('keypress', function (event) {
                 if ($(this).val() && event.keyCode == 13) {
@@ -21,7 +20,6 @@ var Todo = function () {
     };
 
     var render_one = function (work, index) {
-        console.log('status', work.is_complete);
         var status = work.is_complete?'complete':'actived';
         var li = '<li class="list-group-item todo-list-item '+ status + '"' +'>' +
                     '<a class="glyphicon glyphicon-ok btn-link"></a>' +
@@ -35,7 +33,6 @@ var Todo = function () {
             });
         $li.find('.glyphicon-ok')
             .click(function () {
-                console.log('ok', index);
                 toggle_work(index);
             });
         $('ul.list-group').append($li);
@@ -44,6 +41,7 @@ var Todo = function () {
     var render_nav = function () {
         $('.filter-work').click(function () {
             var status = $(this).data('status');
+            filter_work(status);
         });
         var $toggle_all = $('.input-group').find('a');
         var $status_nav = $('.list-group-item-info');
@@ -79,13 +77,18 @@ var Todo = function () {
     };
 
     var toggle_work = function (index) {
-        console.log(index);
         all_works[index].is_complete = !all_works[index].is_complete;
         store.set('all_works', all_works);
         render();
     };
 
-    var filter_work = function() {}
+    var filter_work = function(status) {
+        var $li = $('li.todo-list-item');
+        $li.removeClass('none');
+        if (status) {
+            $li.not('.'+status).addClass('none');
+        }
+    }
 
     var complete_count = function () {
         var complete_count = 0;
