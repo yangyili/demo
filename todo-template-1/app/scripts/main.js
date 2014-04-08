@@ -61,9 +61,9 @@ var Todo = function () {
         var completed_count = complete_count();
 
         $clear_btn.click(function () {
-            remove_all_work();
+            remove_all_complete_work();
         });
-        $clear_btn.text('clear completed('+completed_count+')');
+        $clear_btn.text('clear completed(' + completed_count + ')');
         if (completed_count > 0) {
             $clear_btn.removeClass('hide-element');
         } else {
@@ -108,8 +108,13 @@ var Todo = function () {
         }
     };
 
-    var remove_all_work = function () {
-        all_works = [];
+    var remove_all_complete_work = function () {
+        for (var i =0; i < all_works.length; i++) {
+            if (all_works[i].is_complete) {
+                all_works.splice(i, 1);
+                i--;
+            }
+        }
         store.set('all_works', all_works);
         render();
     };
