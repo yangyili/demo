@@ -21,7 +21,6 @@
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
-        <script src="scripts/store.js"></script>
 
     </head>
     <body>
@@ -81,7 +80,6 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>
-
         <!-- build:js scripts/plugins.js -->
         <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
         <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
@@ -98,7 +96,13 @@
         <!-- endbuild -->
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/store.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+        Todo6.init();
+    });
+</script>
