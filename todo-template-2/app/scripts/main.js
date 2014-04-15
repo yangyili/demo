@@ -16,11 +16,11 @@ var Todo6 = function () {
     var render = function () {
         $('ul.todo-list').empty();
         for (var i = 0; i < all_work.length; i++) {
-            render_one(all_work[i]);
+            render_one(all_work[i], i);
         }
     };
 
-    var render_one = function (work) {
+    var render_one = function (work, index) {
         var li = '<li class="list-group-item todo-list-item">' +
                     '<a class="glyphicon glyphicon-ok btn-link"></a>' +
                     '<span class="col-xs-offset-1"></span>' +
@@ -28,7 +28,10 @@ var Todo6 = function () {
                  '</li>';
         var $li = $(li);
         $li.find('span').text(work.name);
-        var state_class = work.is_complete ? 'completed' : 'actived';
+        $li.find('.glyphicon-ok').click(function (index) {
+            toggle_work(index);
+        });
+        var state_class = work.is_complete ? 'complete' : 'actived';
         $li.addClass(state_class);
         $('ul.todo-list').append($li);
     };
@@ -36,6 +39,13 @@ var Todo6 = function () {
     var add_work = function (work_name) {
         var work = {name: work_name, is_complete: 0};
         all_work.unshift(work );
+        store.set('all_work', all_work);
+        render();
+    };
+
+    var toggle_work = function (index) {
+        console.log('toggle');
+        all_work[index].is_complete = !all_work[index].is_complete;
         store.set('all_work', all_work);
         render();
     };
