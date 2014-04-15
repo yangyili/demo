@@ -31,6 +31,9 @@ var Todo6 = function () {
         $li.find('.glyphicon-ok').click(function (index) {
             toggle_work(index);
         });
+        $li.find('.glyphicon-remove').click(function (index) {
+            remove_work(index);
+        });
         var state_class = work.is_complete ? 'complete' : 'actived';
         $li.addClass(state_class);
         $('ul.todo-list').append($li);
@@ -49,6 +52,13 @@ var Todo6 = function () {
         store.set('all_work', all_work);
         render();
     };
+
+    var remove_work = function (index) {
+        all_work.splice(index, 1);
+        store.set('all_work', all_work);
+        render();
+    };
+
     return {
         init: init,
         add_work: add_work
