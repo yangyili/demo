@@ -68,10 +68,9 @@ var Todo6 = function () {
     };
 
     var remove_completed_work = function () {
-        for (var i = 0; i < all_work.length; i++) {
+        for (var i = all_work.length - 1; i >= 0; i--) {
             if (all_work[i].is_complete) {
                 all_work.splice(i, 1);
-                i++;
             }
         }
         store.set('all_work', all_work);
@@ -90,9 +89,17 @@ var Todo6 = function () {
 
     var filter_work = function (states) {
         var $li = $('li');
-        $li.removeClass('none');
-        if (states != 'all') {
-            $li.not('.' + states).addClass('none');
+        var $completed = completed_work();
+        var $active = active_work();
+        $li.hide();
+        if (states == 'all') {
+            $li.show();
+        }
+        if (states == 'active') {
+            $active.show();
+        }
+        if (states == 'completed') {
+            $completed.show();
         }
     };
 
@@ -104,6 +111,14 @@ var Todo6 = function () {
             }
         }
         return active_work_number;
+    };
+
+    var completed_work = function () {
+        return $('li.completed');
+    };
+
+    var active_work = function () {
+        return $('li.active');
     };
 
     return {
