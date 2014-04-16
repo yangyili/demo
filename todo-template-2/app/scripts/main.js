@@ -10,9 +10,13 @@ var Todo6 = function () {
                 $(this).val('');
             }
         });
-        $('.list-group-item-info').find('.filter').click(function () {
+        var $nav = $('.list-group-item-info');
+        $nav.find('.filter').click(function () {
             var states = $(this).text().toLowerCase();
             filter_work(states);
+        });
+        $nav.find('.pull-right').click(function () {
+            remove_completed_work();
         });
         render();
     };
@@ -60,6 +64,17 @@ var Todo6 = function () {
 
     var remove_work = function (index) {
         all_work.splice(index, 1);
+        store.set('all_work', all_work);
+        render();
+    };
+
+    var remove_completed_work = function () {
+        for (var i = 0; i < all_work.length; i++) {
+            if (all_work[i].is_complete) {
+                all_work.splice(i, 1);
+                i++;
+            }
+        }
         store.set('all_work', all_work);
         render();
     };
