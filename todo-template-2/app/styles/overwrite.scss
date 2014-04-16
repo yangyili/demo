@@ -13,11 +13,6 @@
     .active, .completed {
         display: none;
     }
-    .ul {
-      .complete {
-        text-decoration: line-through;
-      }
-    }
 }
 
 .todo-list-item {
@@ -29,4 +24,9 @@
             display: block;
         }
     }
+}
+li {
+  &.complete {
+    text-decoration: line-through;
+  }
 }

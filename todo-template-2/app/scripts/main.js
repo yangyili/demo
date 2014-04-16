@@ -18,6 +18,7 @@ var Todo6 = function () {
         for (var i = 0; i < all_work.length; i++) {
             render_one(all_work[i], i);
         }
+        init_navigation();
     };
 
     var render_one = function (work, index) {
@@ -28,10 +29,10 @@ var Todo6 = function () {
                  '</li>';
         var $li = $(li);
         $li.find('span').text(work.name);
-        $li.find('.glyphicon-ok').click(function (index) {
+        $li.find('.glyphicon-ok').click(function () {
             toggle_work(index);
         });
-        $li.find('.glyphicon-remove').click(function (index) {
+        $li.find('.glyphicon-remove').click(function () {
             remove_work(index);
         });
         var state_class = work.is_complete ? 'complete' : 'actived';
@@ -47,7 +48,7 @@ var Todo6 = function () {
     };
 
     var toggle_work = function (index) {
-        console.log('toggle');
+        console.log('toggle', index);
         all_work[index].is_complete = !all_work[index].is_complete;
         store.set('all_work', all_work);
         render();
@@ -57,6 +58,26 @@ var Todo6 = function () {
         all_work.splice(index, 1);
         store.set('all_work', all_work);
         render();
+    };
+
+    var init_navigation = function () {
+        var $nav = $('.list-group-item-info');
+        var $left_work_info = $nav.find('.pull-left');
+        var $clear_work_btn = $nav.find('.pull-right');
+        var active_count = active_work_count();
+        var complete_count = all_work.length - active_count;
+        $left_work_info.text(active_count + ' items left');
+        $clear_work_btn.text('Clear completed ' + complete_count);
+    };
+
+    var active_work_count = function () {
+        var active_work_number = 0;
+        for (var i= 0; i < all_work.length; i++) {
+            if (!all_work[i].is_complete) {
+                active_work_number++;
+            }
+        }
+        return active_work_number;
     };
 
     return {
