@@ -1,7 +1,6 @@
 var Todo6 = function () {
     var all_work = store.get('all_work') || [];
     var init = function() {
-        console.log('work_name');
         $('.unadded-todo').on('keypress', function (event) {
             var work_name = $(this).val();
             console.log(work_name);
@@ -26,7 +25,7 @@ var Todo6 = function () {
         for (var i = 0; i < all_work.length; i++) {
             render_one(all_work[i], i);
         }
-        init_navigation();
+        refresh_nav_info();
     };
 
     var render_one = function (work, index) {
@@ -79,7 +78,7 @@ var Todo6 = function () {
         render();
     };
 
-    var init_navigation = function () {
+    var refresh_nav_info = function () {
         var $nav = $('.list-group-item-info');
         var $left_work_info = $nav.find('.pull-left');
         var $clear_work_btn = $nav.find('.pull-right');
