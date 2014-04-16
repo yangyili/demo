@@ -10,6 +10,10 @@ var Todo6 = function () {
                 $(this).val('');
             }
         });
+        $('.list-group-item-info').find('.filter').click(function () {
+            var states = $(this).text().toLowerCase();
+            filter_work(states);
+        });
         render();
     };
 
@@ -35,7 +39,7 @@ var Todo6 = function () {
         $li.find('.glyphicon-remove').click(function () {
             remove_work(index);
         });
-        var state_class = work.is_complete ? 'complete' : 'actived';
+        var state_class = work.is_complete ? 'completed' : 'active';
         $li.addClass(state_class);
         $('ul.todo-list').append($li);
     };
@@ -68,6 +72,14 @@ var Todo6 = function () {
         var complete_count = all_work.length - active_count;
         $left_work_info.text(active_count + ' items left');
         $clear_work_btn.text('Clear completed ' + complete_count);
+    };
+
+    var filter_work = function (states) {
+        var $li = $('li');
+        $li.removeClass('none');
+        if (states != 'all') {
+            $li.not('.' + states).addClass('none');
+        }
     };
 
     var active_work_count = function () {

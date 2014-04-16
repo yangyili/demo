@@ -10,9 +10,6 @@
         margin-top: 1px;
         border-bottom: none;
     }
-    .active, .completed {
-        display: none;
-    }
 }
 
 .todo-list-item {
@@ -26,7 +23,10 @@
     }
 }
 li {
-  &.complete {
+  &.completed {
     text-decoration: line-through;
   }
+}
+.none {
+  display: none;
 }
