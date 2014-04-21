@@ -15,8 +15,20 @@ var Todo = function () {
     }
 
     var render = function () {
-        $('ul.todo-list').empty();
-        for (var i = 0; i < all_work.length; i++) {
+        var $ul = $('ul.todo-list');
+        $ul.empty();
+        var $list_group_info = $('.list-group-item-info');
+        var all_work_count = all_work.length;
+        var completed_count = completed_work_count();
+        var active_count = all_work_count - completed_count;
+        if (all_work.length) {
+            $list_group_info.find('span').text(active_count + ' items left');
+        }
+
+        if (completed_count) {
+            $list_group_info.find('.remove-all-work').text('remove all completed(' + completed_count + ')');
+        }
+        for (var i = 0; i < all_work_count; i++) {
             render_one(all_work[i], i);
         }
     };
@@ -29,12 +41,12 @@ var Todo = function () {
                       '<a class="glyphicon glyphicon-remove btn-link pull-right remove remove-work"></a>' +
                   '</li>';
         var $li = $(li);
-        var $toggle = $li.find('.toggle-status');
-        var $remove = $li.find('.remove-work');
-        $toggle.click(function () {
+        $li.find('.toggle-status')
+            .click(function () {
             toggle_work(i);
         });
-        $remove.click(function () {
+        $li.find('.remove-work')
+            .click(function () {
             remove_work(i);
         });
         var $ul = $('ul.todo-list');
@@ -53,6 +65,16 @@ var Todo = function () {
         all_work.splice(index, 1);
         store.set('all_work', all_work);
         render();
+    };
+
+    var completed_work_count = function () {
+        var completed_count = 0;
+        for (var i = 0; i < all_work.length; i++) {
+            if (all_work[i].is_complete) {
+                completed_count++;
+            }
+        }
+        return completed_count;
     };
 
     return {
