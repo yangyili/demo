@@ -8,6 +8,7 @@ var Todo = function () {
                 all_work.unshift(work);
                 store.set('all_work', all_work);
                 $this.val('');
+                render();
             }
         });
         render();
@@ -22,15 +23,18 @@ var Todo = function () {
 
     var render_one = function (work, i) {
         var status_class = work.is_complete ? 'completed' : 'active';
-        var $li = '<li class="list-group-item todo-list-item ' + status_class +'">' +
+        var li = '<li class="list-group-item todo-list-item ' + status_class +'">' +
                       '<a class="glyphicon glyphicon-ok btn-link toggle-status"></a>' +
                       '<span class="col-xs-offset-1">' + work.name + '</span>' +
                       '<a class="glyphicon glyphicon-remove btn-link pull-right remove remove-work"></a>' +
                   '</li>';
-        $($li).find('.toggle-status').click(function () {
+        var $li = $(li);
+        var $toggle = $li.find('.toggle-status');
+        var $remove = $li.find('.remove-work');
+        $toggle.click(function () {
             toggle_work(i);
         });
-        $($li).find('.remove-work').click(function () {
+        $remove.click(function () {
             remove_work(i);
         });
         var $ul = $('ul.todo-list');
@@ -38,12 +42,14 @@ var Todo = function () {
     };
 
     var toggle_work = function (index) {
+        console.log('toggle', index);
         all_work[index].is_complete = !all_work[index].is_complete;
         store.set('all_work', all_work);
         render();
     };
 
     var remove_work = function (index) {
+        console.log('remove', index);
         all_work.splice(index, 1);
         store.set('all_work', all_work);
         render();
