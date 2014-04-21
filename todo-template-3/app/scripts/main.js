@@ -1,4 +1,4 @@
-var Todo7 = function () {
+var Todo = function () {
     var all_work = [];
     function init() {
         $('input.unadded-todo').keypress(function (event) {
