@@ -17,6 +17,13 @@ var Todo = function () {
     var render = function () {
         var $ul = $('ul.todo-list');
         $ul.empty();
+        for (var i = 0; i < all_work.length; i++) {
+            render_one(all_work[i], i);
+        }
+        refresh_nav();
+    };
+
+    var refresh_nav = function () {
         var $list_group_info = $('.list-group-item-info');
         var all_work_count = all_work.length;
         var completed_count = completed_work_count();
@@ -27,9 +34,6 @@ var Todo = function () {
 
         if (completed_count) {
             $list_group_info.find('.remove-all-work').text('remove all completed(' + completed_count + ')');
-        }
-        for (var i = 0; i < all_work_count; i++) {
-            render_one(all_work[i], i);
         }
     };
 
@@ -54,14 +58,12 @@ var Todo = function () {
     };
 
     var toggle_work = function (index) {
-        console.log('toggle', index);
         all_work[index].is_complete = !all_work[index].is_complete;
         store.set('all_work', all_work);
         render();
     };
 
     var remove_work = function (index) {
-        console.log('remove', index);
         all_work.splice(index, 1);
         store.set('all_work', all_work);
         render();
