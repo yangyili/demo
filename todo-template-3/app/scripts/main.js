@@ -102,17 +102,17 @@ var Todo = function () {
 
     var render_active = function () {
         var active_works = active_work();
-        console.log('active_works', active_works)
+        $('ul.todo-list').empty();
         for (var i = 0; i < active_works.length; i++) {
-            console.log('active[index]', active_works[i]);
-            render_one(active_work[i], i);
+            render_one(active_works[i], i);
         }
     };
 
     var render_completed = function () {
+        $('ul.todo-list').empty();
         var completed_works = completed_work();
         for (var i = 0; i < completed_works.length; i++) {
-            render_one(completed_work[i], i);
+            render_one(completed_works[i], i);
         }
     };
 
