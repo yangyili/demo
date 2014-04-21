@@ -11,6 +11,7 @@ var Todo = function () {
                 render();
             }
         });
+        bind_filter_work();
         render();
     }
 
@@ -35,6 +36,16 @@ var Todo = function () {
         if (completed_count) {
             $list_group_info.find('.remove-all-work').text('remove all completed(' + completed_count + ')');
         }
+    };
+
+    var bind_filter_work = function () {
+        var $list_group_info = $('.list-group-item-info');
+        $list_group_info.find('.btn-link')
+            .click(function () {
+                var filter_status = $(this).data('status');
+                console.log('status', filter_status)
+                filter_work(filter_status);
+            });
     };
 
     var render_one = function (work, i) {
@@ -79,6 +90,51 @@ var Todo = function () {
         return completed_count;
     };
 
+    var filter_work = function (status) {
+        if (status == 'active') {
+            render_active();
+        } else if (status == 'completed') {
+            render_completed();
+        } else {
+            render();
+        }
+    };
+
+    var render_active = function () {
+        var active_works = active_work();
+        console.log('active_works', active_works)
+        for (var i = 0; i < active_works.length; i++) {
+            console.log('active[index]', active_works[i]);
+            render_one(active_work[i], i);
+        }
+    };
+
+    var render_completed = function () {
+        var completed_works = completed_work();
+        for (var i = 0; i < completed_works.length; i++) {
+            render_one(completed_work[i], i);
+        }
+    };
+
+    var active_work = function () {
+        var active_works = [];
+        for (var i = 0; i < all_work.length; i++) {
+            if (!all_work[i].is_complete) {
+                active_works.unshift(all_work[i]);
+            }
+        }
+        return active_works;
+    };
+
+    var completed_work = function () {
+        var completed_works = [];
+        for (var i = 0; i < all_work.length; i++) {
+            if (all_work[i].is_complete) {
+                completed_works.unshift(all_work[i]);
+            }
+        }
+        return completed_works;
+    };
     return {
         init: init
     };
