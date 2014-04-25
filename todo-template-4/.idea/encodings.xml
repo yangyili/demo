@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/.gitignore" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/index.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/main.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/application/views/layout.html" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/application/views/template/subscribe.haml" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/poi_search.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/poi_search_obj.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/prepareFeed.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/register.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/rememberme.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/remind.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/remindUseful.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/remind_upload_image.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/reward.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/showNote.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/submission.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/tag.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/targetGo.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/travelPreferenceShow.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/travelPrepare.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/userEdit.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/viewPhotos.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/xiu.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/xiuFans.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/js/xiuUseful.js" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/styles/index.scss" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/styles/note-preview.scss" charset="UTF-8" />
+    <file url="file://$USER_HOME$/src/hipandora/public/styles/top-bar.scss" charset="UTF-8" />
+  </component>
+</project>
+
